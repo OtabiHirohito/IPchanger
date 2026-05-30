@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-**IPアドレス切替器** は、Windowsのネットワーク設定（IPアドレス、サブネットマスク、ゲートウェイ、DNS）を素早く、簡単に切り替えるためのオープンソースツールです。
+**IPアドレス切替器** は、Windowsのネットワーク設定（IPアドレス、サブネットマスク、ゲートウェイ、DNS）を素早く、簡単に切り替えるためのオープンソースソフトウェアです。
 
 社内ネットワーク、客先ネットワーク、開発環境など、ネットワーク設定を頻繁に切り替えるエンジニアやIT管理者に最適です。
 
@@ -35,26 +35,44 @@
 
 ## 📦 インストール / 開発
 
-### ビルド方法
+ ### インストール方法
+
+1. 以下のリンクから `IPchanger.zip` をダウンロードします。
+
+   [IPchanger.zip をダウンロード](https://github.com/OtabiHirohito/IPchanger/releases)
+
+2. ダウンロードしたZIPファイルを任意の場所に展開します。
+3. 展開したフォルダー内の `IPchanger.exe` を実行します。
+4. ネットワーク設定を変更するため、管理者権限で実行してください。
+
+ ### ビルド方法
 
 1. [Visual Studio 2022](https://visualstudio.microsoft.com/ja/vs/) または [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) をインストールします。
 2. リポジトリをクローンします。
 
-```bash
+   ```bash
    git clone https://github.com/OtabiHirohito/IPchanger.git
    ```
 
 3. ソリューションファイル `IPchanger.sln` を開いてビルドするか、コマンドラインで以下を実行します。
 
-```bash
+   ```bash
    dotnet build
    ```
 
+## 🤝 寄付について
+
+   このソフトを気に入っていただけた場合は、よろしければ以下の寄付先への支援をご検討ください。
+<sub>本ソフトおよび制作者はリンク先の組織とは一切関係がございません。</sub>
+
+* [寄付先1](https://donate.jrc.or.jp/ "日本赤十字社")
+* [寄付先2](https://www.doubutukikin.or.jp/legal/business/ "どうぶつ基金")
+
 ## 📄 ライセンス
 
-このプロジェクトは **MITライセンス** のもとで公開されています。詳細は [LICENSE.txt](LICENSE.txt) をご覧ください。
+  このプロジェクトは **MITライセンス** のもとで公開されています。詳細は [LICENSE.txt](LICENSE.txt) をご覧ください。
 
----
+  ---
 
-Created by \[Otabi Hirohito]
+  Created by 大度寛仁
 
