@@ -38,13 +38,27 @@ namespace IPchanger
                 Width = s.WindowWidth > 100 ? s.WindowWidth : 850;
                 Height = s.WindowHeight > 100 ? s.WindowHeight : 500;
 
+                LanguageManager.Instance.PropertyChanged += (sender, args) =>
+                {
+                    UpdateCurrentIpDisplay();
+                };
+
+                if (s.IsEnglishMode)
+                {
+                    LanguageManager.Instance.ChangeLanguage("en");
+                }
+                else
+                {
+                    LanguageManager.Instance.ChangeLanguage("ja");
+                }
+
                 LoadSettings();
                 RefreshAdapterList();
                 ApplyGwModeVisibility();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"初期化エラー: {ex.Message}", "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageManager.Instance.GetString("InitErrorFormat", ex.Message), LanguageManager.Instance.GetString("InitErrorTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -128,7 +142,8 @@ namespace IPchanger
                 var ip = adapter.GetIPProperties().UnicastAddresses
                     .FirstOrDefault(a => a.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
 
-                lblCurrentIp.Text = $"現在のIP: {(ip != null ? ip.Address.ToString() : "未取得")}";
+                var ipText = ip != null ? ip.Address.ToString() : LanguageManager.Instance.GetString("NotAcquired");
+                lblCurrentIp.Text = LanguageManager.Instance.GetString("CurrentIpFormat", ipText);
             }
         }
 
@@ -156,7 +171,7 @@ namespace IPchanger
 
             try
             {
-                SetStatus("設定適用中...", Brushes.OrangeRed);
+                SetStatus(LanguageManager.Instance.GetString("StatusApplying"), Brushes.OrangeRed);
 
                 await Task.Run(() => {
                     var ipArgs = (isGwMode && !string.IsNullOrWhiteSpace(gw))
@@ -172,12 +187,12 @@ namespace IPchanger
 
                 await Task.Delay(1000);
                 UpdateCurrentIpDisplay();
-                SetStatus($"パターン{patternNo} 適用完了 ({DateTime.Now:HH:mm:ss})", Brushes.Green);
+                SetStatus(LanguageManager.Instance.GetString("StatusAppliedPattern", patternNo, DateTime.Now.ToString("HH:mm:ss")), Brushes.Green);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"適用エラー: {ex.Message}");
-                SetStatus("エラーが発生しました", Brushes.Red);
+                MessageBox.Show(LanguageManager.Instance.GetString("ApplyErrorFormat", ex.Message));
+                SetStatus(LanguageManager.Instance.GetString("StatusError"), Brushes.Red);
             }
         }
 
@@ -188,8 +203,8 @@ namespace IPchanger
 
             try
             {
-                SetStatus("DHCP設定中...", Brushes.OrangeRed);
-                lblCurrentIp.Text = "現在のIP: 更新中...";
+                SetStatus(LanguageManager.Instance.GetString("StatusSettingDhcp"), Brushes.OrangeRed);
+                lblCurrentIp.Text = LanguageManager.Instance.GetString("CurrentIpFormat", LanguageManager.Instance.GetString("UpdatingIp"));
 
                 await Task.Run(() => {
                     RunNetsh($"interface ip set address name=\"{adapterName}\" dhcp");
@@ -200,14 +215,15 @@ namespace IPchanger
                 {
                     await Task.Delay(1000);
                     UpdateCurrentIpDisplay();
-                    if (!lblCurrentIp.Text.Contains("未") && !lblCurrentIp.Text.Contains("更新")) break;
+                    if (!lblCurrentIp.Text.Contains(LanguageManager.Instance.GetString("NotAcquired")) &&
+                        !lblCurrentIp.Text.Contains(LanguageManager.Instance.GetString("UpdatingIp"))) break;
                 }
-                SetStatus("DHCP自動設定 完了", Brushes.Green);
+                SetStatus(LanguageManager.Instance.GetString("StatusDhcpCompleted"), Brushes.Green);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex?.Message ?? "不明なエラー");
-                SetStatus("エラーが発生しました", Brushes.Red);
+                MessageBox.Show(ex?.Message ?? LanguageManager.Instance.GetString("UnknownError"));
+                SetStatus(LanguageManager.Instance.GetString("StatusError"), Brushes.Red);
             }
         }
 
@@ -228,6 +244,14 @@ namespace IPchanger
         #endregion
 
         #region UIレイアウト制御
+
+        private void chkLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            var isEnglish = chkLanguage.IsChecked ?? false;
+            Properties.Settings.Default.IsEnglishMode = isEnglish;
+            Properties.Settings.Default.Save();
+            LanguageManager.Instance.ChangeLanguage(isEnglish ? "en" : "ja");
+        }
 
         private void chkGwMode_Click(object sender, RoutedEventArgs e)
         {

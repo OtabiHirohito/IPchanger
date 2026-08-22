@@ -3,11 +3,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
 
+[English README is available here](README_EN.md)
+
 **IPアドレス切替器** は、Windowsのネットワーク設定（IPアドレス、サブネットマスク、ゲートウェイ、DNS）を素早く、簡単に切り替えるためのオープンソースソフトウェアです。
 
 社内ネットワーク、客先ネットワーク、開発環境など、ネットワーク設定を頻繁に切り替えるエンジニアやIT管理者に最適です。
 
-![スクリーンショット](./screenshot1.png)
+![スクリーンショット](./screenshotjp.png)
 
 ## 🚀 主な機能
 
@@ -17,6 +19,7 @@
 * **アダプター選択**: PCに搭載されている有効なネットワークアダプターを自動検出し、対象を選択可能。
 * **メモ機能**: 設定内容や用途を記録しておける便利なサイドメモウィンドウを搭載。
 * **設定の自動保存**: 入力した内容は自動的に保存され、次回の起動時にも保持されます。
+* **多言語対応**: 英語と日本語を簡単に切替可能。
 * **モダンなUI**: 直感的で使いやすいWPFベースのデザイン。
 
 ## 📋 動作要件
@@ -74,5 +77,4 @@
 
   ---
 
-  Created by 大度寛仁
-
+  Created by 大度寛仁 / X (Twitter): [@OtabiHirohito](https://x.com/OtabiHirohito)

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
+    <value>IPchanger</value>
+  </data>
+  <data name="AdvancedSettings" xml:space="preserve">
+    <value>Advanced Settings</value>
+  </data>
+  <data name="ShowMemo" xml:space="preserve">
+    <value>Show Memo</value>
+  </data>
+  <data name="AdapterSelection" xml:space="preserve">
+    <value>Network Adapter Selection</value>
+  </data>
+  <data name="CurrentIpFormat" xml:space="preserve">
+    <value>Current IP: {0}</value>
+  </data>
+  <data name="FetchingIp" xml:space="preserve">
+    <value>Fetching...</value>
+  </data>
+  <data name="NotAcquired" xml:space="preserve">
+    <value>Not acquired</value>
+  </data>
+  <data name="UpdatingIp" xml:space="preserve">
+    <value>Updating...</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RefreshToolTip" xml:space="preserve">
+    <value>Refresh network information</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="SubnetMask" xml:space="preserve">
+    <value>Subnet Mask</value>
+  </data>
+  <data name="Gateway" xml:space="preserve">
+    <value>Gateway</value>
+  </data>
+  <data name="Dns" xml:space="preserve">
+    <value>DNS</value>
+  </data>
+  <data name="Apply1" xml:space="preserve">
+    <value>Apply 1</value>
+  </data>
+  <data name="Apply2" xml:space="preserve">
+    <value>Apply 2</value>
+  </data>
+  <data name="Apply3" xml:space="preserve">
+    <value>Apply 3</value>
+  </data>
+  <data name="Apply4" xml:space="preserve">
+    <value>Apply 4</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="SetDhcp" xml:space="preserve">
+    <value>Set to DHCP (Auto)</value>
+  </data>
+  <data name="MemoTitle" xml:space="preserve">
+    <value>Memo</value>
+  </data>
+  <data name="StatusApplying" xml:space="preserve">
+    <value>Applying settings...</value>
+  </data>
+  <data name="StatusAppliedPattern" xml:space="preserve">
+    <value>Pattern {0} applied ({1})</value>
+  </data>
+  <data name="StatusSettingDhcp" xml:space="preserve">
+    <value>Setting DHCP...</value>
+  </data>
+  <data name="StatusDhcpCompleted" xml:space="preserve">
+    <value>DHCP auto configuration completed</value>
+  </data>
+  <data name="StatusError" xml:space="preserve">
+    <value>An error occurred</value>
+  </data>
+  <data name="InitErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="InitErrorFormat" xml:space="preserve">
+    <value>Initialization Error: {0}</value>
+  </data>
+  <data name="ApplyErrorFormat" xml:space="preserve">
+    <value>Apply Error: {0}</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Unknown error</value>
+  </data>
+  <data name="EngLabel" xml:space="preserve">
+    <value>ENG</value>
+  </data>
+</root>

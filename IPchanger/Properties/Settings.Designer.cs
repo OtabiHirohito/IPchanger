@@ -310,5 +310,17 @@ namespace IPchanger.Properties {
                 this["MemoHeight"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsEnglishMode {
+            get {
+                return ((bool)(this["IsEnglishMode"]));
+            }
+            set {
+                this["IsEnglishMode"] = value;
+            }
+        }
     }
 }

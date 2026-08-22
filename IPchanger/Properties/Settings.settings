@@ -74,5 +74,8 @@
     <Setting Name="MemoHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
+    <Setting Name="IsEnglishMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
