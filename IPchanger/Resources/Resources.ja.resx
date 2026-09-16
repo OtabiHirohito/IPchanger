@@ -151,4 +151,25 @@
   <data name="EngLabel" xml:space="preserve">
     <value>ENG</value>
   </data>
+  <data name="ShowPingTool" xml:space="preserve">
+    <value>Ping / ツール</value>
+  </data>
+  <data name="PingToolTitle" xml:space="preserve">
+    <value>Ping / ipconfig ツール</value>
+  </data>
+  <data name="PingExecute" xml:space="preserve">
+    <value>Ping実行</value>
+  </data>
+  <data name="IpconfigExecute" xml:space="preserve">
+    <value>ipconfig実行</value>
+  </data>
+  <data name="TargetIpLabel" xml:space="preserve">
+    <value>IPアドレス:</value>
+  </data>
+  <data name="Executing" xml:space="preserve">
+    <value>コマンド実行中...</value>
+  </data>
+  <data name="IpRequired" xml:space="preserve">
+    <value>IPアドレスを入力してください。</value>
+  </data>
 </root>

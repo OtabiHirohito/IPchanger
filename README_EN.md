@@ -18,6 +18,7 @@ It is ideal for engineers and IT administrators who frequently switch network co
 * **Advanced Settings Mode**: Show or hide Gateway and DNS fields as needed.
 * **Adapter Selection**: Automatically detect and select active network adapters on your PC.
 * **Side Memo Function**: Built-in side memo window to keep notes and usage records.
+* **Ping / ipconfig Tools**: Built-in side window to execute Ping commands against specified IP addresses and view `ipconfig` network details.
 * **Auto-Save Settings**: Configured settings are saved automatically and retained across restarts.
 * **Multi-Language Support**: Easily switch between English and Japanese.
 * **Modern UI**: Intuitive and easy-to-use WPF-based interface.
@@ -35,6 +36,7 @@ It is ideal for engineers and IT administrators who frequently switch network co
 3. Enter the desired IP address, subnet mask, etc. (Click "Advanced Settings" toggle button to display Gateway and DNS input fields).
 4. Click the "Apply" button to apply the settings.
 5. Click the "Set to DHCP (Auto)" button to reset all settings to automatic acquisition.
+6. Toggle the "Ping / Tools" switch in the top header to open the window for executing Ping commands and viewing `ipconfig` output.
 
 ## 📦 Installation / Development
 

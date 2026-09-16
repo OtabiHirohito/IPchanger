@@ -151,4 +151,25 @@
   <data name="EngLabel" xml:space="preserve">
     <value>ENG</value>
   </data>
+  <data name="ShowPingTool" xml:space="preserve">
+    <value>Ping / Tools</value>
+  </data>
+  <data name="PingToolTitle" xml:space="preserve">
+    <value>Ping &amp; ipconfig Tool</value>
+  </data>
+  <data name="PingExecute" xml:space="preserve">
+    <value>Ping</value>
+  </data>
+  <data name="IpconfigExecute" xml:space="preserve">
+    <value>ipconfig</value>
+  </data>
+  <data name="TargetIpLabel" xml:space="preserve">
+    <value>IP Address:</value>
+  </data>
+  <data name="Executing" xml:space="preserve">
+    <value>Running command...</value>
+  </data>
+  <data name="IpRequired" xml:space="preserve">
+    <value>Please enter an IP address.</value>
+  </data>
 </root>

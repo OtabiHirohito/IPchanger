@@ -322,5 +322,53 @@ namespace IPchanger.Properties {
                 this["IsEnglishMode"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsPingOpen {
+            get {
+                return ((bool)(this["IsPingOpen"]));
+            }
+            set {
+                this["IsPingOpen"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public double PingWidth {
+            get {
+                return ((double)(this["PingWidth"]));
+            }
+            set {
+                this["PingWidth"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public double PingHeight {
+            get {
+                return ((double)(this["PingHeight"]));
+            }
+            set {
+                this["PingHeight"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PingTargetIp {
+            get {
+                return ((string)(this["PingTargetIp"]));
+            }
+            set {
+                this["PingTargetIp"] = value;
+            }
+        }
     }
 }

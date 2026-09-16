@@ -16,13 +16,18 @@ namespace IPchanger
     public partial class MainWindow : Window
     {
         private MemoWindow? _memoWindow;
+        private PingWindow? _pingWindow;
         private bool _isShuttingDown;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            LocationChanged += (s, e) => SyncMemoPosition();
+            LocationChanged += (s, e) =>
+            {
+                SyncMemoPosition();
+                SyncPingPosition();
+            };
             Loaded += OnWindowLoaded;
             
             InitializeApplication();
@@ -67,6 +72,10 @@ namespace IPchanger
             if (Properties.Settings.Default.IsMemoOpen)
             {
                 OpenMemoWindow();
+            }
+            if (Properties.Settings.Default.IsPingOpen)
+            {
+                OpenPingWindow();
             }
         }
 
@@ -286,6 +295,56 @@ namespace IPchanger
 
         #region メモ帳・ウィンドウ管理
 
+        private void btnPingWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnPingWindow.IsChecked == true) OpenPingWindow();
+            else ClosePingWindow();
+        }
+
+        private void OpenPingWindow()
+        {
+            if (_pingWindow != null) return;
+
+            _pingWindow = new();
+            _pingWindow.WindowClosedByUI += (s, e) => {
+                _pingWindow = null;
+                if (!_isShuttingDown)
+                {
+                    btnPingWindow.IsChecked = false;
+                    SavePingState(false);
+                }
+            };
+
+            _pingWindow.Show();
+            SyncPingPosition();
+            SavePingState(true);
+        }
+
+        private void ClosePingWindow()
+        {
+            if (_pingWindow != null)
+            {
+                _pingWindow.Close();
+                _pingWindow = null;
+            }
+            if (!_isShuttingDown) SavePingState(false);
+        }
+
+        private void SavePingState(bool isOpen)
+        {
+            Properties.Settings.Default.IsPingOpen = isOpen;
+            Properties.Settings.Default.Save();
+        }
+
+        private void SyncPingPosition()
+        {
+            if (_pingWindow != null && _pingWindow.IsVisible)
+            {
+                _pingWindow.Left = Left + Width - 7;
+                _pingWindow.Top = Top;
+            }
+        }
+
         private void btnMemo_Click(object sender, RoutedEventArgs e)
         {
             if (btnMemo.IsChecked == true) OpenMemoWindow();
@@ -340,6 +399,7 @@ namespace IPchanger
         {
             _isShuttingDown = true;
             CloseMemoWindow();
+            ClosePingWindow();
 
             if (WindowState == WindowState.Normal)
             {
