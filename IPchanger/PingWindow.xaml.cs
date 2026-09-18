@@ -1,5 +1,7 @@
 using System;
 using System.Diagnostics;
+using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,10 +16,63 @@ namespace IPchanger
         public event EventHandler? WindowClosedByUI;
         private bool _isRunning;
 
+        [DllImport("kernel32.dll")]
+        private static extern uint GetConsoleOutputCP();
+
+        [DllImport("kernel32.dll")]
+        private static extern uint GetOEMCP();
+
+        static PingWindow()
+        {
+            try
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            }
+            catch
+            {
+                // Ignore if already registered or unsupported
+            }
+        }
+
         public PingWindow()
         {
             InitializeComponent();
             Closing += PingWindow_Closing;
+        }
+
+        private static Encoding GetCommandEncoding()
+        {
+            try
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    uint cp = GetConsoleOutputCP();
+                    if (cp == 0) cp = GetOEMCP();
+                    if (cp > 0)
+                    {
+                        return Encoding.GetEncoding((int)cp);
+                    }
+                }
+            }
+            catch
+            {
+                // Fallback if P/Invoke fails
+            }
+
+            try
+            {
+                int oemCp = CultureInfo.CurrentCulture.TextInfo.OEMCodePage;
+                if (oemCp > 0)
+                {
+                    return Encoding.GetEncoding(oemCp);
+                }
+            }
+            catch
+            {
+                // Fallback
+            }
+
+            return Encoding.Default;
         }
 
         private async void btnPing_Click(object sender, RoutedEventArgs e)
@@ -48,6 +103,7 @@ namespace IPchanger
 
             try
             {
+                var commandEncoding = GetCommandEncoding();
                 var psi = new ProcessStartInfo
                 {
                     FileName = command,
@@ -56,8 +112,8 @@ namespace IPchanger
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
-                    StandardOutputEncoding = Encoding.Default,
-                    StandardErrorEncoding = Encoding.Default
+                    StandardOutputEncoding = commandEncoding,
+                    StandardErrorEncoding = commandEncoding
                 };
 
                 using var process = new Process { StartInfo = psi };
