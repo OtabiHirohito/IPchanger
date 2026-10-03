@@ -28,6 +28,7 @@ namespace IPchanger
                 SyncMemoPosition();
                 SyncPingPosition();
             };
+            Activated += OnWindowActivated;
             Loaded += OnWindowLoaded;
             
             InitializeApplication();
@@ -305,7 +306,10 @@ namespace IPchanger
         {
             if (_pingWindow != null) return;
 
-            _pingWindow = new();
+            _pingWindow = new()
+            {
+                Owner = this
+            };
             _pingWindow.WindowClosedByUI += (s, e) => {
                 _pingWindow = null;
                 if (!_isShuttingDown)
@@ -355,7 +359,10 @@ namespace IPchanger
         {
             if (_memoWindow != null) return;
 
-            _memoWindow = new();
+            _memoWindow = new()
+            {
+                Owner = this
+            };
             _memoWindow.WindowClosedByUI += (s, e) => {
                 _memoWindow = null;
                 if (!_isShuttingDown)
@@ -392,6 +399,20 @@ namespace IPchanger
             {
                 _memoWindow.Left = Left - _memoWindow.ActualWidth + 7; 
                 _memoWindow.Top = Top;
+            }
+        }
+
+        private void OnWindowActivated(object? sender, EventArgs e)
+        {
+            if (_memoWindow != null && _memoWindow.IsVisible)
+            {
+                _memoWindow.Topmost = true;
+                _memoWindow.Topmost = false;
+            }
+            if (_pingWindow != null && _pingWindow.IsVisible)
+            {
+                _pingWindow.Topmost = true;
+                _pingWindow.Topmost = false;
             }
         }
 
